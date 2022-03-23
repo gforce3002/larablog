@@ -20,5 +20,7 @@
     nombre de la ruta podemos acceder sin cambiar ni una linea de codigo
 -->
     <a href="{{route('contacto')}}">Contacto (ruta con nombre)</a>
-</body>
+    <a href="{{route('prueba')}}">Test</a>
+
+    </body>
 </html>

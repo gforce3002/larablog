@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class TestController extends Controller
 {
     /**
@@ -80,5 +82,11 @@ class TestController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    function test(){
+       $user =  User::find(1);
+        //var_dump($user);
+        return view('test',['user'=>$user]);
     }
 }

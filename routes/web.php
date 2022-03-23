@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,6 @@ Route::get('/customs', function () {
     /** Retornamos una vista con multiples parametros */
     return view('custom', ['msj'=>$msj, "flag"=> true]);
 });
+
+Route::get('/test',[App\Http\Controllers\TestController::class, 'test'])->name("prueba");
 
