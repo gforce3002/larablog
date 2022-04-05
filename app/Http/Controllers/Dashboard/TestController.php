@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 
 use App\Models\User;
+//Cuando el controlador no se encuentre en la misma raiz del controlador master
+//se debe de especificar esta linea para importarlo
+use App\Http\Controllers\Controller;
 
 class TestController extends Controller
 {
@@ -87,6 +90,6 @@ class TestController extends Controller
     function test(){
        $user =  User::find(1);
         //var_dump($user);
-        return view('test',['user'=>$user]);
+        return view('Dashboard.test.test',['user'=>$user]);
     }
 }

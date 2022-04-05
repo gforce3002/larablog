@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Dashboard</h1>
     {{$user}}
+    <!-- Funciona con el include de php para importar fragmentos de codigo -->
+    @yield("content")
 </body>
 </html>

@@ -28,5 +28,5 @@ Route::get('/customs', function () {
     return view('custom', ['msj'=>$msj, "flag"=> true]);
 });
 
-Route::get('/test',[App\Http\Controllers\TestController::class, 'test'])->name("prueba");
+Route::get('/test',[App\Http\Controllers\Dashboard\TestController::class, 'test'])->name("prueba");
 
