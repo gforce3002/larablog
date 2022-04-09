@@ -11,8 +11,26 @@
     <div>
         <form action="{{route('post.store')}}" method="post">
             @csrf
-            <label for=""></label>
-            <input type="text" name="">
+            <label for="">Titulo</label>
+            <input type="text" name="title">
+            <label for="">Slug</label>
+            <input type="text" name="slug">
+            <label for="">Contenido:</label>
+            <textarea name="content" id="" cols="30" rows="10"></textarea>
+            <label for="">Descripcion:</label>
+            <textarea name="content" id="" cols="30" rows="10"></textarea>
+            <label for="">Categoria</label>
+            <select name="category_id" id="">
+                <option value=""></option>
+                @foreach($categories as $c)
+                    <option value="{{$c->id}}">{{$c->title}}</option>
+                @endforeach
+            </select>
+            <label for="">Posteado</label>
+            <select name="posts" id="">
+                <option value="yes">Si</option>
+                <option value="not">No</option>
+            </select>
             <button type="submit">Enviar</button>
         </form>
     </div>
