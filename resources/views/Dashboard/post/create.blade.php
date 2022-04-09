@@ -18,7 +18,7 @@
             <label for="">Contenido:</label>
             <textarea name="content" id="" cols="30" rows="10"></textarea>
             <label for="">Descripcion:</label>
-            <textarea name="content" id="" cols="30" rows="10"></textarea>
+            <textarea name="description" id="" cols="30" rows="10"></textarea>
             <label for="">Categoria</label>
             <select name="category_id" id="">
                 <option value=""></option>
