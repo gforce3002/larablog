@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Post</title>
-</head>
-<body>
-    <h1>Entro a la vista create</h1>
+@extends('Dashboard.layout')
+
+@section('content')
+<h1>Crear un Post</h1>
+    <!-- este fragmento de codigo es par visualizar los errrores de los campos
+que deben de ser requeridos en codigo esta en la carpeta View/Dashboard/fragment/_error-form.blade.php
+  -->
+    @include('Dashboard.fragment._error-form')
     <div>
         <form action="{{route('post.store')}}" method="post">
             @csrf
@@ -22,17 +20,16 @@
             <label for="">Categoria</label>
             <select name="category_id" id="">
                 <option value=""></option>
-                @foreach($categories as $c)
-                    <option value="{{$c->id}}">{{$c->title}}</option>
+                @foreach($categories as $title => $id)
+                    <option value="{{$id}}">{{$title}}</option>
                 @endforeach
             </select>
             <label for="">Posteado</label>
-            <select name="posts" id="">
+            <select name="posted" id="">
                 <option value="yes">Si</option>
                 <option value="not">No</option>
             </select>
             <button type="submit">Enviar</button>
         </form>
     </div>
-</body>
-</html>
+@endsection

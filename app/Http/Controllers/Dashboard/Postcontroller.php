@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StoreRequest;
 use App\Models\Post;
 use App\Models\Category;
+
 use Illuminate\Http\Request;
 
 class Postcontroller extends Controller
@@ -27,10 +29,15 @@ class Postcontroller extends Controller
      */
     public function create()
     {
-        //
-    $categories = Category::get();
-    
-       echo view('Dashboard.post.create', compact('categories'));
+        //el metodo get funciona para obtener todos los datos de la tabla funciona como
+        // select * from table
+    #$categories = Category::get();
+
+    //con la funcion pluck sirve para obtener solo algunos campos de la base de datos
+    //es lo mismo como select campo1, campo2 from table
+    $categories = Category::pluck('id','title');
+    //dd($categories);
+    echo view('Dashboard.post.create', compact('categories'));
     }
 
     /**
@@ -42,9 +49,22 @@ class Postcontroller extends Controller
     public function store(Request $request)
     {
         //
-         echo request("title");
-        echo $request->input("slug");
-        dd($request->all());
+         /* echo request("title");
+        echo $request->input("slug"); */
+        //dd();
+
+        $validated = $request->validate([
+            'title'=>"required|min:5|max:500",
+            'slug'=>"required|min:5|max:500",
+            'content'=>"required|min:7",
+            'category_id'=>"required|integer",
+            'description'=>"required|min:7",
+            'posted'=>"required"
+        ]);
+        dd($validated);
+        $data = array_merge($request->all(), ['image'=>''] );
+        //dd($data);
+        Post::create($data);
     }
 
     /**
