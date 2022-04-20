@@ -8,8 +8,10 @@ use Illuminate\Support\Str;
 
 class StoreRequest extends FormRequest
 {
-    static function prepareforValidation(){
-
+    protected function prepareForValidation(){
+        $this->merge([
+            'slug'=> Str::slug($this->title)
+        ]);
     }
 
     /**
@@ -27,7 +29,7 @@ class StoreRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    static function myRules()
     {
         return [
             //

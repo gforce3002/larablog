@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+
 use App\Http\Requests\Post\StoreRequest;
 use App\Models\Post;
 use App\Models\Category;
 
-use Illuminate\Http\Request;
 
 class Postcontroller extends Controller
 {
@@ -46,7 +48,7 @@ class Postcontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         //
          /* echo request("title");
@@ -61,10 +63,13 @@ class Postcontroller extends Controller
             'description'=>"required|min:7",
             'posted'=>"required"
         ]);
+
+        $validated = Validator::make($request->all(),StoreRequest::myRules());
         dd($validated);
-        $data = array_merge($request->all(), ['image'=>''] );
+        /* 
+        $data = array_merge($request->all(), ['image'=>''] ); */
         //dd($data);
-        Post::create($data);
+        Post::create($request->validated());
     }
 
     /**
